@@ -1,0 +1,39 @@
+Pet Image Classification Project
+Overview
+
+This project aims to classify pet images using pretrained CNN models and compare these classifications with true identities extracted from filenames. It evaluates the performance of different CNN architectures and provides statistics on classification accuracy.
+Features
+
+    Extracts pet labels from image filenames.
+    Classifies images using specified CNN models (e.g., VGG, ResNet, AlexNet).
+    Adjusts results to identify if images are classified as dogs or non-dogs.
+    Calculates and displays detailed statistics on classification performance.
+    Prints summary results including percentages of correct matches and breed classifications.
+
+
+Install dependencies:
+
+bash
+
+    pip install -r requirements.txt
+
+    Download the required models and data files.
+
+Usage
+
+To classify pet images and view results:
+
+bash
+
+python check_images.py --dir <directory_with_images> --arch <model> --dogfile <dog_names_file>
+
+Replace <directory_with_images>, <model>, and <dog_names_file> with your specific inputs.
+Files Structure
+
+    check_images.py: Main script to run the image classification.
+    get_input_args.py: Retrieves command-line arguments.
+    get_pet_labels.py: Extracts pet labels from image filenames.
+    classify_images.py: Classifies images using CNN models.
+    adjust_results4_isadog.py: Adjusts results for dog and non-dog classification.
+    calculates_results_stats.py: Calculates and summarizes classification statistics.
+    print_results.py: Prints final results and statistics.

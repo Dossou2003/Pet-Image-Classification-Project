@@ -1,0 +1,6 @@
+pillow==10.4.0
+torchvision
+numpy
+argparse
+time
+torch
