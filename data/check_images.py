@@ -60,12 +60,14 @@ def main():
     #             get_pet_labels(in_arg.dir)
     # This function creates the results dictionary that contains the results, 
     # this dictionary is returned from the function call as the variable results
-    results = get_pet_labels(in_arg.dir)
+   # Check if in_arg is properly initialized and has 'dir' attribute
+    if in_arg is None or not hasattr(in_arg, 'dir'):
+        print("Error: Missing directory argument.")
+        return
 
+    results = get_pet_labels(in_arg.dir)
     # Function that checks Pet Images in the results Dictionary using results    
     check_creating_pet_image_labels(results)
-
-
     # TODO 3: Define classify_images function within the file classiy_images.py
     # Once the classify_images function has been defined replace first 'None' 
     # in the function call with in_arg.dir and replace the last 'None' in the
@@ -125,6 +127,6 @@ def main():
           +str(int((tot_time%3600)%60)) )
     
 
-# Call to main function to run the program
-if __name__ == "__main__":
-    main()
+    # Call to main function to run the program
+    if __name__ == "__main__":
+        main()
