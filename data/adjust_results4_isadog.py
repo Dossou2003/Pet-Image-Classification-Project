@@ -37,16 +37,18 @@
 #       results_dic dictionary that is passed into the function is a mutable 
 #       data type so no return is needed.
 # 
+
 def adjust_results4_isadog(results_dic, dogsfile):
     """
-    Adjusts the results dictionary to determine if classifier correctly 
-    classifies images as a dog.
+    Ajuste le dictionnaire des résultats pour déterminer si le classificateur classe correctement
+    les images comme étant des chiens.
     """
     with open(dogsfile, 'r') as f:
         dog_names = {line.strip().lower() for line in f}
-    
-    for filename, result in results_dic.items():
+
+    for result in results_dic.values(): 
         classifier_label = result[1]
-        classifier_is_dog = any(dog in classifier_label for dog in dog_names)
+        classifier_is_dog = result[1] in dog_names  
         truth_is_dog = result[0] in dog_names
-        results_dic[filename].extend([classifier_is_dog, truth_is_dog])
+        result.extend([truth_is_dog, classifier_is_dog])  
+

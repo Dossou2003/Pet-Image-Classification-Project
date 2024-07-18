@@ -22,15 +22,22 @@
 ##
 # Imports classifier function for using CNN to classify images 
 from classifier import classifier 
+import os
+
 
 def classify_images(images_dir, results_dic, model):
     """
     Classifies images and updates results_dic with the classifier label.
     """
-    for filename, label_list in results_dic.items():
-        image_path = images_dir + filename
-        classifier_label = classifier(image_path, model).lower().strip()
-        truth = label_list[0]
-        found = classifier_label.find(truth)
+
+    for filename in results_dic:  
+        image_path = os.path.join(images_dir, filename)  
+
+        model_label = classifier(image_path, model) 
+
+        model_label = model_label.lower().strip()  
+        truth = results_dic[filename][0]
+
+        found = model_label.find(truth)
         match = 1 if found >= 0 else 0
-        results_dic[filename].extend([classifier_label, match])
+        results_dic[filename].extend([model_label, match])
