@@ -308,3 +308,25 @@ def check_calculating_results(results_dic, results_stats_dic):
         print("N Images: {:2d}  N Dog Images: {:2d}  N NotDog Images: {:2d} \nPct Corr dog: {:5.1f} Pct Corr NOTdog: {:5.1f}  Pct Corr Breed: {:5.1f}".format(
               n_images, n_pet_dog, n_pet_notd, pct_corr_dog, pct_corr_notdog,
               pct_corr_breed))
+
+
+
+def check_calculating_results(results_dic, results_stats):
+    """
+    Checks the calculation of results_stats to ensure all values are correct.
+    """
+    for key in results_dic:
+        if len(results_dic[key]) < 4:
+            print(f"Warning: Entry {key} in results_dic has less than 4 elements.")
+            continue
+        if results_dic[key][3] == 1:
+            print(f"{key}: Correctly identified as a dog.")
+        else:
+            print(f"{key}: Incorrectly identified.")
+
+    print("Results dictionary:")
+    for key in results_dic:
+        print(f"{key} : {results_dic[key]}")
+
+# Les autres fonctions déjà présentes dans print_functions_for_lab_checks.py suivent ici
+# ...
